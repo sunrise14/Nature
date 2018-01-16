@@ -1,0 +1,153 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Lato", sans-serif;
+    font-weight:400;
+    font-size:16px;
+    line-height:1.7; /* distance between 2 lines, 100-110% is the default line height. */
+    color:#777; 
+    padding:30px;
+}
+.header{
+    height:95vh;
+    background-image: linear-gradient(to bottom right, rgba(111, 213, 116, 0.411), rgba(40, 180, 133, 0.507)), url(../img/hero.jpg);
+    background-size: cover; /* always fits the element inside the box irrespective of viewport width*/
+    background-position:top; /*crops the bottom part of image to set viewport but doesn't crop the top */
+    clip-path:polygon(0 0,100% 0, 100% 75vh, 0 100%);
+    position:relative;
+
+}
+.img-box{
+    position:absolute;
+    top:40px;
+    left:40px;
+}
+.img{
+    height:45px;
+}
+.text-box{
+    position:absolute;
+    top:40%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.title{  
+    color:#fff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 60px;
+}
+.main-title{
+    font-size:65px;
+    font-weight:400px;
+    letter-spacing: 17px;
+    display:block;
+    animation-name:moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+}
+.caption{
+    display:block;
+    letter-spacing: 12px;
+    font-size:16px;
+    animation-name:moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+}
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding:15px 40px;
+    position: relative;
+    display:inline-block;
+    text-align: center;
+    transition:all 0.2s; /* transform is one that comes under it.Annother way to implement animations is to use keyframes.If we specify 'all' then all prop will be animated */
+}
+.btn:hover{
+    transform:translateY(-3px); /* negative makes it move up along Y axis by 3px  */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2)
+}
+.btn:active{
+    transform:translate(-1px);
+    box-shadow: 0 10px 1px rgba(0,0,0,0.2)
+}
+.btn-white{
+    background: #fff;
+    color:#777;
+    border-radius: 100px;
+    
+    text-align: center;
+}
+.btn::after{
+    content:""; /* not exactly sure, but he said that this should be there */
+    display:inline-block;
+    height:100%; /* sets sizes to 100% of original buttons height and width */
+    width:100%;
+    border-radius: 100px;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-1;
+    transition:all 0.4s;
+}
+.btn-white::after{
+    background-color: white;
+}
+.btn:hover::after{
+    transform:scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+
+}
+.btn-animated{
+    animation:moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+}
+@keyframes moveInLeft{
+    0%{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    80%{
+        transform: translateX(20px);
+    }
+    100%{
+        opacity:1;
+        transform: translateX(0px);
+    }
+}
+@keyframes moveInRight{
+    0%{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    80%{
+        transform: translateX(-20px);
+    }
+    100%{
+        opacity:1;
+        transform: translateX(0px);
+    }
+}
+@keyframes moveInBottom{
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }  
+    100%{
+        opacity:1;
+        transform: translateY(0px);
+    }
+}
