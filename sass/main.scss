@@ -1,164 +1,18 @@
-$color-primary:#55c57a;
-$color-primary-light:#7ed56f;
-$color-primary-dark:#28b485;
-$color-grey-dark:#777;
-$color-white:#fff;
-$color-black:#000;
-*,
-*::after,
-*::before{
-    padding:0;
-    margin:0;
-    box-sizing: inherit;
-}
-html{
-    font-size:10px;
-}
-body{
-    font-family: "Lato", sans-serif;
-    font-weight:400;
-    line-height:1.7; /* distance between 2 lines, 100-110% is the default line height. */
-    color:$color-grey-dark; 
-    padding:3rem;
-    box-sizing: border-box;
-}
-.header{
-    height:95vh;
-    background-image: linear-gradient(to bottom right, rgba($color-primary-light, 0.411), rgba($color-primary-dark, 0.507)), url(../img/hero.jpg);
-    background-size: cover; /* always fits the element inside the box irrespective of viewport width*/
-    background-position:top; /*crops the bottom part of image to set viewport but doesn't crop the top */
-    clip-path:polygon(0 0,100% 0, 100% 75vh, 0 100%);
-    position:relative;
-    &__logo-box{
-        position:absolute;
-        top:4rem;
-        left:4rem;
-    }
-    &__logo{
-        height:3.5rem;
-    }
-    &__img{
-        height:45px;
-    }
-    &__text-box{
-        position:absolute;
-        top:40%;
-        left:50%;
-        transform: translate(-50%,-50%);
-        text-align: center;
-    }
-}
+@import "abstracts/functions.scss";
+@import "abstracts/mixins.scss";
+@import "abstracts/variables.scss";
 
-.heading-primary{  
-    color:$color-white;
-    text-transform: uppercase;
-    backface-visibility: hidden;
-    margin-bottom: 6rem;
-    &--main{ 
-        font-size:6.5rem;
-        font-weight:40rem;
-        letter-spacing: 1.7rem;
-        display:block;
-        animation-name:moveInLeft;
-        animation-duration: 1s;
-        animation-timing-function: ease-in;
-    }
-    &--sub{
-        display:block;
-        letter-spacing: 1.2rem;
-        font-size:1.6rem;
-        animation-name:moveInRight;
-        animation-duration: 1s;
-        animation-timing-function: ease-in;
-    }
-}
+@import "base/base.scss";
+@import "base/animations.scss";
+@import "base/typography.scss";
+@import "base/utilities.scss";
 
-.btn{
-&:link,
-&:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding:1.5rem 4rem;
-    position: relative;
-    display:inline-block;
-    text-align: center;
-    transition:all 0.2s; /* transform is one that comes under it.Annother way to implement animations is to use keyframes.If we specify 'all' then all prop will be animated */
-}
-&:hover{
-    transform:translateY(-3px); /* negative makes it move up along Y axis by 3px  */
-    box-shadow: 0 1rem 2rem rgba($color-black,0.2);
-    &::after{
-        transform:scaleX(1.4) scaleY(1.6);
-        opacity: 0;
-    
-    }
-}
-&:active{
-    transform:translate(-1px);
-    box-shadow: 0 1rem 1rem rgba($color-black,0.2)
-}
-&-white{
-    background:$color-white;
-    color:$color-grey-dark;
-    border-radius: 10rem;
-    text-align: center;
+@import "components/button.scss";
 
-    &::after{
-        background-color: white;
-    }
-}
-&::after{
-    content:""; /* not exactly sure, but he said that this should be there */
-    display:inline-block;
-    height:100%; /* sets sizes to 100% of original buttons height and width */
-    width:100%;
-    border-radius: 10rem;
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:-1;
-    transition:all 0.4s;
-}
+@import "layout/header.scss";
+
+@import "pages/home.scss";
 
 
-&-animated{
-    animation:moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards;
-}
-}
-@keyframes moveInLeft{
-    0%{
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-    80%{
-        transform: translateX(20px);
-    }
-    100%{
-        opacity:1;
-        transform: translateX(0px);
-    }
-}
-@keyframes moveInRight{
-    0%{
-        opacity: 0;
-        transform: translateX(100px);
-    }
-    80%{
-        transform: translateX(-20px);
-    }
-    100%{
-        opacity:1;
-        transform: translateX(0px);
-    }
-}
-@keyframes moveInBottom{
-    0%{
-        opacity: 0;
-        transform: translateY(30px);
-    }  
-    100%{
-        opacity:1;
-        transform: translateY(0px);
-    }
-}
+
+
